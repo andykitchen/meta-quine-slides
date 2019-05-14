@@ -4,8 +4,12 @@
  * By Hakim El Hattab, http://hakim.se
  */
 @import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+@import url(../../lib/font/Playfair_Display/Playfair-Display.css);
+
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #222; }
+
+  
 
 /*********************************************
  * GLOBAL STYLES
@@ -123,12 +127,14 @@ body {
   margin-left: 40px; }
 
 .reveal blockquote {
+  font-family: 'Playfair Display';
   display: block;
   position: relative;
   width: 70%;
   margin: 20px auto;
-  padding: 5px;
+  padding: 10px 0 20px 0;
   font-style: italic;
+  font-weight: 400;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
 
@@ -271,3 +277,13 @@ body {
 @media print {
   .backgrounds {
     background-color: #191919; } }
+
+
+/*********************************************
+ * NEW STYLES
+ *********************************************/
+
+ blockquote.reverse {
+   background: white;
+   color: black;
+ }
