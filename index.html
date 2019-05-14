@@ -25,112 +25,112 @@
   <body>
     <div class="reveal">
       <div class="slides">
-	<section>
-	  <section>
-	    <h1>Meta-quines II</h1>
-	  </section>
-	  <section>
-	    <h1>Q</h1>
-	  </section>
-	  <section>
-	    "a poem about Quines" is a poem about Quines
-	  </section>
-	  <section>
-	    The best way to understand recursion is<br> to understand recursion
-	  </section>
-	  <section>
-	    To best way to understand quotation is<br> "to understand quotation"
-	  </section>
-	</section>
-	<section>
-	  <section>
-	    <pre>
-	      ((lambda (x) `(,x ',x))
-	      '(lambda (x) `(,x ',x)))
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      (eval q) &equiv; q
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      (apply&#x2081; f) &equiv; f
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      (f (Y f)) &equiv; (Y f)
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      ((apply&#x2081; f) (Y f)) &equiv; (apply&#x2081; (Y f))
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      ((eval s) (Q s)) &equiv; (eval (Q s))
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      (define Q
-	        (let ((y '(λ (x y) `(,x (,y ',x ',y)))))
-	          (λ (x) `(,x (,y ',x ',y)))))
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      (define Y
-	        (λ (f)
-	          ((λ (g) (g g))
-	           (λ (g)
-	             (f (λ (x) ((g g) x)))))))
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      (define Y
-	        ((λ (g) ((apply&#x2081; g) g))
-	         (λ (g) (λ (f) (f (lazy&#x2081; ((g g) f)))))))
-	    </pre>
-	    <pre>
-	      (define Q
-	        ((λ (t) ((eval t) t))
-	        '(λ (t) (λ (s) `(,s ((,t ',t) ',s))))))
-	    </pre>
-	  </section>
-	  <section>
-	    <pre>
-	      ((eval '(lambda (x) x)) (Q id&#x209b;)) &equiv; (eval (Q id&#x209b;))
-	    </pre>
-	    <pre>
-	      (Q s) &equiv; (eval (Q s))
-	    </pre>
-	  </section>
-	</section>
-      </div>
-    </div>
+				<section>
+					<section>
+						<h1>Meta-quines II</h1>
+					</section>
+					<section>
+						<h1>Q</h1>
+					</section>
+					<section>
+						"a poem about Quines" is a poem about Quines
+					</section>
+					<section>
+						The best way to understand recursion is<br> to understand recursion
+					</section>
+					<section>
+						To best way to understand quotation is<br> "to understand quotation"
+					</section>
+				</section>
+				<section>
+					<section>
+						<pre><code data-trim>
+							((lambda (x) `(,x ',x))
+							'(lambda (x) `(,x ',x)))
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							(eval q) &equiv; q
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							(apply&#x2081; f) &equiv; f
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							(f (Y f)) &equiv; (Y f)
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							((apply&#x2081; f) (Y f)) &equiv; (apply&#x2081; (Y f))
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							((eval s) (Q s)) &equiv; (eval (Q s))
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							(define Q
+								(let ((y '(λ (x y) `(,x (,y ',x ',y)))))
+									(λ (x) `(,x (,y ',x ',y)))))
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							(define Y
+								(λ (f)
+									((λ (g) (g g))
+									(λ (g)
+										(f (λ (x) ((g g) x)))))))
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							(define Y
+								((λ (g) ((apply&#x2081; g) g))
+								(λ (g) (λ (f) (f (lazy&#x2081; ((g g) f)))))))
+						</code></pre>
+						<pre><code data-trim>
+							(define Q
+								((λ (t) ((eval t) t))
+								'(λ (t) (λ (s) `(,s ((,t ',t) ',s))))))
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-trim>
+							((eval '(lambda (x) x)) (Q id&#x209b;)) &equiv; (eval (Q id&#x209b;))
+						</code></pre>
+						<pre><code data-trim>
+							(Q s) &equiv; (eval (Q s))
+						</code></pre>
+					</section>
+				</section>
+			</div>
+		</div>
 
-    <script src="js/reveal.js"></script>
+		<script src="js/reveal.js"></script>
 
-    <script>
-      // More info about config & dependencies:
-      // - https://github.com/hakimel/reveal.js#configuration
-      // - https://github.com/hakimel/reveal.js#dependencies
-      Reveal.initialize({
-        hash: true,
-        controls: false,
-        progress: false,
-        dependencies: [
-          { src: 'plugin/markdown/marked.js' },
-          { src: 'plugin/markdown/markdown.js' },
-          { src: 'plugin/notes/notes.js', async: true },
-          { src: 'plugin/highlight/highlight.js', async: true }
-        ]
-      });
-    </script>
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				controls: false,
+				progress: false,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
   </body>
 </html>
