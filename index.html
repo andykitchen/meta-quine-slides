@@ -48,45 +48,45 @@
 				</section>
 				<section>
 					<section>
-						<pre><code data-trim>
-							((lambda (x) `(,x ',x))
-							'(lambda (x) `(,x ',x)))
+						<pre><code class="scheme" data-trim>
+							((λ (x) `(,x ',x))
+							'(λ (x) `(,x ',x)))
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(eval q) &equiv; q
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(apply&#x2081; f) &equiv; f
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(f (Y f)) &equiv; (Y f)
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							((apply&#x2081; f) (Y f)) &equiv; (apply&#x2081; (Y f))
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							((eval s) (Q s)) &equiv; (eval (Q s))
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(define Q
 								(let ((y '(λ (x y) `(,x (,y ',x ',y)))))
 									(λ (x) `(,x (,y ',x ',y)))))
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(define Y
 								(λ (f)
 									((λ (g) (g g))
@@ -95,22 +95,22 @@
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(define Y
 								((λ (g) ((apply&#x2081; g) g))
 								(λ (g) (λ (f) (f (lazy&#x2081; ((g g) f)))))))
 						</code></pre>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(define Q
 								((λ (t) ((eval t) t))
 								'(λ (t) (λ (s) `(,s ((,t ',t) ',s))))))
 						</code></pre>
 					</section>
 					<section>
-						<pre><code data-trim>
-							((eval '(lambda (x) x)) (Q id&#x209b;)) &equiv; (eval (Q id&#x209b;))
+						<pre><code class="scheme" data-trim>
+							((eval '(λ (x) x)) (Q id&#x209b;)) &equiv; (eval (Q id&#x209b;))
 						</code></pre>
-						<pre><code data-trim>
+						<pre><code class="scheme" data-trim>
 							(Q s) &equiv; (eval (Q s))
 						</code></pre>
 					</section>
