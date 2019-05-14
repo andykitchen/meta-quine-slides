@@ -96,12 +96,18 @@
 	        ((λ (g) ((apply&#x2081; g) g))
 	         (λ (g) (λ (f) (f (lazy&#x2081; ((g g) f)))))))
 	    </pre>
-	  </section>
-	  <section>
 	    <pre>
 	      (define Q
 	        ((λ (t) ((eval t) t))
 	        '(λ (t) (λ (s) `(,s ((,t ',t) ',s))))))
+	    </pre>
+	  </section>
+	  <section>
+	    <pre>
+	      ((eval '(lambda (x) x)) (Q id&#x209b;)) &equiv; (eval (Q id&#x209b;))
+	    </pre>
+	    <pre>
+	      (Q s) &equiv; (eval (Q s))
 	    </pre>
 	  </section>
 	</section>
