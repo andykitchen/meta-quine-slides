@@ -290,6 +290,9 @@ body {
    color: black;
  }
 
+ .playfair {
+  font-family: 'Playfair Display';
+ }
 
  .circle-rotate{
   -webkit-animation: rotation 10s infinite linear;
