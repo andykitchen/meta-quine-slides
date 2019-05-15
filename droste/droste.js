@@ -8,7 +8,7 @@ main();
 //
 function main() {
     const canvas = document.querySelector('#glcanvas');
-    const gl = canvas.getContext('webgl', {antialias: false});
+    const gl = canvas.getContext('webgl', {antialias: true});
     gl.getExtension('OES_standard_derivatives');
     gl.getExtension('EXT_shader_texture_lod');
 
@@ -182,8 +182,17 @@ function main() {
       gl_FragColor = vec4(c, c, c, 1.0);
       */
 
+      highp vec4 c4;
+      for (highp float i = -3.0; i < 4.0; i++) {
+          for (highp float j = -3.0; j < 4.0; j++) {
+              c4 += lookup_droste(p + vec2(i*dp - 0.7071067*dp*j, j*dp + 0.7071067*dp*i));
+          }
+      }
+
+      gl_FragColor = c4 / 49.0;
+
       // gl_FragColor = texture2D(uSampler, vTextureCoord);
-      gl_FragColor = lookup_droste(p);
+      // gl_FragColor = lookup_droste(p);
     }
   `;
 
