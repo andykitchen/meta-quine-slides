@@ -21,6 +21,17 @@
       link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
       document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
+    <style>
+      .big {
+        font-size: 2em;
+        line-height: 1.5em;
+      }
+
+      code {
+        font-size: 24pt;
+        line-height: 1.2em;
+      }
+</style>
   </head>
   <body>
     <div class="reveal">
@@ -62,23 +73,23 @@
 				</section>
 				<section>
 					<section>
-						<pre><code class="scheme" data-trim>
+						<pre><code class="big scheme" data-trim>
 							((λ (x) `(,x ',x))
 							'(λ (x) `(,x ',x)))
 						</code></pre>
 					</section>
 					<section>
-						<pre><code class="scheme" data-trim>
+						<pre><code class="big scheme" data-trim>
 							(eval q) &equiv; q
 						</code></pre>
 					</section>
 					<section>
-						<pre><code class="scheme" data-trim>
+						<pre><code class="big scheme" data-trim>
 							(apply&#x2081; f) &equiv; f
 						</code></pre>
 					</section>
 					<section>
-						<pre><code class="scheme" data-trim>
+						<pre><code class="big scheme" data-trim>
 							(f (Y f)) &equiv; (Y f)
 						</code></pre>
 					</section>
@@ -95,29 +106,29 @@
 					<section>
 						<pre><code class="scheme" data-trim>
 							(define Q
-								(let ((y '(λ (x y) `(,x (,y ',x ',y)))))
-									(λ (x) `(,x (,y ',x ',y)))))
+							  (let ((y '(λ (x y) `(,x (,y ',x ',y)))))
+							    (λ (x) `(,x (,y ',x ',y)))))
 						</code></pre>
 					</section>
 					<section>
 						<pre><code class="scheme" data-trim>
 							(define Y
-								(λ (f)
-									((λ (g) (g g))
-									(λ (g)
-										(f (λ (x) ((g g) x)))))))
+							  (λ (f)
+							    ((λ (g) (g g))
+							     (λ (g)
+							       (f (λ (x) ((g g) x)))))))
 						</code></pre>
 					</section>
 					<section>
 						<pre><code class="scheme" data-trim>
 							(define Y
-								((λ (g) ((apply&#x2081; g) g))
-								(λ (g) (λ (f) (f (lazy&#x2081; ((g g) f)))))))
+							  ((λ (g) ((apply&#x2081; g) g))
+							   (λ (g) (λ (f) (f (lazy&#x2081; ((g g) f)))))))
 						</code></pre>
 						<pre><code class="scheme" data-trim>
-							(define Q
-								((λ (t) ((eval t) t))
-								'(λ (t) (λ (s) `(,s ((,t ',t) ',s))))))
+						    (define Q
+						      ((λ (t) ((eval t) t))
+						      '(λ (t) (λ (s) `(,s ((,t ',t) ',s))))))
 						</code></pre>
 					</section>
 					<section>
